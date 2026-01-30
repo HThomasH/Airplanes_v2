@@ -22,7 +22,7 @@ demo = gr.Interface(
     inputs=gr.Image(type="pil", label="Upload an airplane image"),
     outputs=gr.Label(num_top_classes=min(5, len(labels)), label="Prediction"),
     title="Airplane Recognition",
-    description="FastAI airplane classifier deployed on Hugging Face Spaces",
+    description="FastAI airplane classifier deployed on Hugging Face Spaces. Please upload an image from one of the following planes: Dassault Rafale, Piper Cub, Boeing 737, McDonnell Douglas C-17, Citation XL."
 )
 
 demo.queue().launch(server_name="0.0.0.0", server_port=7860, ssr_mode=False)
