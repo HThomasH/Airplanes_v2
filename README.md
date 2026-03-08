@@ -67,7 +67,7 @@ After experimenting with the small prototype, the next step was to work with a m
 
 The project was therefore extended to use the **FGVC‑Aircraft dataset**, a benchmark dataset designed for **fine‑grained aircraft recognition**.
 
-Dataset reference:
+Dataset reference: https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/
 
 Fine‑Grained Visual Classification of Aircraft  
 Maji et al., 2013
