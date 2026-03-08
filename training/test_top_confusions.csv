@@ -1,0 +1,113 @@
+true_label,pred_label,count,row_normalized_rate
+Airbus,Boeing,38,0.08775981524249422
+Douglas Aircraft Company,Boeing,22,0.16541353383458646
+Boeing,McDonnell Douglas,19,0.025885558583106268
+McDonnell Douglas,Boeing,17,0.07296137339055794
+Boeing,Airbus,10,0.013623978201634877
+Lockheed Corporation,Boeing,7,0.10606060606060606
+Embraer,Boeing,6,0.02575107296137339
+Boeing,Douglas Aircraft Company,6,0.008174386920980926
+Gulfstream Aerospace,Canadair,5,0.07462686567164178
+Embraer,Airbus,5,0.02145922746781116
+Airbus,Embraer,5,0.011547344110854504
+Saab,Embraer,4,0.06060606060606061
+Tupolev,McDonnell Douglas,4,0.05970149253731343
+de Havilland,Boeing,4,0.024096385542168676
+Boeing,Tupolev,4,0.005449591280653951
+Bombardier Aerospace,Canadair,3,0.09090909090909091
+Lockheed Corporation,McDonnell Douglas,3,0.045454545454545456
+Fokker,Embraer,3,0.03
+Fokker,McDonnell Douglas,3,0.03
+Cessna,Embraer,3,0.022388059701492536
+Cessna,de Havilland,3,0.022388059701492536
+de Havilland,Dornier,3,0.018072289156626505
+Airbus,Douglas Aircraft Company,3,0.006928406466512702
+Antonov,Lockheed Corporation,2,0.06060606060606061
+Piper,Cirrus Aircraft,2,0.06060606060606061
+Piper,Robin,2,0.06060606060606061
+Supermarine,Boeing,2,0.058823529411764705
+Supermarine,Douglas Aircraft Company,2,0.058823529411764705
+Supermarine,de Havilland,2,0.058823529411764705
+Beechcraft,Cessna,2,0.030303030303030304
+ATR,Dornier,2,0.029850746268656716
+Dassault Aviation,Embraer,2,0.029850746268656716
+Gulfstream Aerospace,British Aerospace,2,0.029850746268656716
+Tupolev,Embraer,2,0.029850746268656716
+Fokker,Airbus,2,0.02
+Fokker,Canadair,2,0.02
+Fokker,de Havilland,2,0.02
+British Aerospace,Airbus,2,0.015037593984962405
+Canadair,Bombardier Aerospace,2,0.015037593984962405
+Canadair,Dassault Aviation,2,0.015037593984962405
+Canadair,McDonnell Douglas,2,0.015037593984962405
+Douglas Aircraft Company,Airbus,2,0.015037593984962405
+Cessna,Canadair,2,0.014925373134328358
+Embraer,Canadair,2,0.008583690987124463
+McDonnell Douglas,Lockheed Martin,2,0.008583690987124463
+Airbus,Canadair,2,0.004618937644341801
+Airbus,McDonnell Douglas,2,0.004618937644341801
+Boeing,Embraer,2,0.0027247956403269754
+Bombardier Aerospace,Embraer,1,0.030303030303030304
+Dornier,ATR,1,0.030303030303030304
+Dornier,Boeing,1,0.030303030303030304
+Lockheed Martin,British Aerospace,1,0.030303030303030304
+Lockheed Martin,Panavia,1,0.030303030303030304
+Panavia,de Havilland,1,0.030303030303030304
+Piper,Fokker,1,0.030303030303030304
+Piper,McDonnell Douglas,1,0.030303030303030304
+Yakovlev,Boeing,1,0.030303030303030304
+Yakovlev,Canadair,1,0.030303030303030304
+Yakovlev,McDonnell Douglas,1,0.030303030303030304
+Yakovlev,Tupolev,1,0.030303030303030304
+Cirrus Aircraft,Boeing,1,0.029411764705882353
+Cirrus Aircraft,British Aerospace,1,0.029411764705882353
+Cirrus Aircraft,Cessna,1,0.029411764705882353
+Eurofighter,Ilyushin,1,0.029411764705882353
+Fairchild,Douglas Aircraft Company,1,0.029411764705882353
+Fairchild,Embraer,1,0.029411764705882353
+Fairchild,Fokker,1,0.029411764705882353
+Ilyushin,McDonnell Douglas,1,0.029411764705882353
+Robin,Airbus,1,0.029411764705882353
+Beechcraft,Embraer,1,0.015151515151515152
+Beechcraft,Gulfstream Aerospace,1,0.015151515151515152
+Beechcraft,McDonnell Douglas,1,0.015151515151515152
+Lockheed Corporation,Airbus,1,0.015151515151515152
+Lockheed Corporation,Antonov,1,0.015151515151515152
+Saab,Airbus,1,0.015151515151515152
+Saab,Boeing,1,0.015151515151515152
+ATR,Antonov,1,0.014925373134328358
+ATR,Fokker,1,0.014925373134328358
+ATR,Lockheed Corporation,1,0.014925373134328358
+Dassault Aviation,Boeing,1,0.014925373134328358
+Dassault Aviation,McDonnell Douglas,1,0.014925373134328358
+Gulfstream Aerospace,Boeing,1,0.014925373134328358
+Gulfstream Aerospace,Cessna,1,0.014925373134328358
+Gulfstream Aerospace,Embraer,1,0.014925373134328358
+Tupolev,Boeing,1,0.014925373134328358
+Tupolev,Douglas Aircraft Company,1,0.014925373134328358
+Tupolev,Ilyushin,1,0.014925373134328358
+Fokker,Tupolev,1,0.01
+British Aerospace,Boeing,1,0.007518796992481203
+British Aerospace,Cessna,1,0.007518796992481203
+British Aerospace,Embraer,1,0.007518796992481203
+British Aerospace,Fokker,1,0.007518796992481203
+British Aerospace,de Havilland,1,0.007518796992481203
+Canadair,Boeing,1,0.007518796992481203
+Canadair,Embraer,1,0.007518796992481203
+Douglas Aircraft Company,McDonnell Douglas,1,0.007518796992481203
+Douglas Aircraft Company,de Havilland,1,0.007518796992481203
+Cessna,British Aerospace,1,0.007462686567164179
+Cessna,Fairchild,1,0.007462686567164179
+de Havilland,Embraer,1,0.006024096385542169
+de Havilland,Lockheed Corporation,1,0.006024096385542169
+de Havilland,Supermarine,1,0.006024096385542169
+de Havilland,Tupolev,1,0.006024096385542169
+Embraer,Beechcraft,1,0.004291845493562232
+Embraer,de Havilland,1,0.004291845493562232
+McDonnell Douglas,Airbus,1,0.004291845493562232
+McDonnell Douglas,Embraer,1,0.004291845493562232
+McDonnell Douglas,Tupolev,1,0.004291845493562232
+Boeing,Canadair,1,0.0013623978201634877
+Boeing,Fokker,1,0.0013623978201634877
+Boeing,Lockheed Corporation,1,0.0013623978201634877
+Boeing,de Havilland,1,0.0013623978201634877
