@@ -42,7 +42,7 @@ This prototype provided a working end‑to‑end pipeline and served as a starti
 
 ## 2. First deployment with Hugging Face Spaces
 
-After the prototype worked locally, the next step was deploying the model using **Hugging Face Spaces**.
+After the prototype worked locally, the next step was deploying the model using **Hugging Face Spaces**. You can find the demo here: https://huggingface.co/spaces/HThomasH/Airplanes_v2
 
 This stage required reorganizing the project slightly in order to separate:
 
@@ -159,7 +159,7 @@ These files were generated after evaluating the model on the test split.
 
 ## Hugging Face demo
 
-This folder contains the files used to run the public demo.
+This folder contains the files used to run the public demo. You can find the demo here: https://huggingface.co/spaces/HThomasH/FGVC-Aircraft_manufacturers
 
 Files:
 
