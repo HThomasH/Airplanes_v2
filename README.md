@@ -99,7 +99,7 @@ training/
     Training notebooks and evaluation results for the FGVC‑Aircraft model
 
 Hugging Face demo/
-    Files used for the deployed inference application
+    Files used for the deployed inference application for the FGVC‑Aircraft model
 ```
 
 ---
