@@ -263,14 +263,6 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Then open:
-
-```
-http://localhost:7860
-```
-
----
-
 # Summary
 
 This repository contains:
