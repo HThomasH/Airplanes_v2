@@ -159,11 +159,8 @@ def to_bulleted_markdown(items):
 supported_manufacturers_md = to_bulleted_markdown(LABELS)
 supported_families_md = to_bulleted_markdown(SUPPORTED_FAMILIES)
 
-intro_md = f"""
+intro_md = """
 Upload an aircraft photo. The model predicts the manufacturer.
-
-**Supported manufacturers in this model:** {len(LABELS)}  
-**Supported aircraft families listed below:** {len(SUPPORTED_FAMILIES)}
 """
 
 dataset_note_md = """
@@ -199,10 +196,10 @@ with gr.Blocks(css=CSS, title="FGVC-Aircraft — Manufacturer Classifier") as de
 
     gr.Markdown(dataset_note_md)
 
-    with gr.Accordion(f"Supported manufacturers ({len(LABELS)})", open=False):
+    with gr.Accordion("Supported manufacturers", open=False):
         gr.Markdown(supported_manufacturers_md)
 
-    with gr.Accordion(f"Supported aircraft families ({len(SUPPORTED_FAMILIES)})", open=False):
+    with gr.Accordion("Supported aircraft families", open=False):
         gr.Markdown(supported_families_md)
 
 
