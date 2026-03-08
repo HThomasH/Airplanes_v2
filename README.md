@@ -85,6 +85,8 @@ Working with this dataset required adapting the training pipeline to handle:
 - more subtle visual differences between classes
 - more structured preprocessing.
 
+The model was evaluated on the official FGVC-Aircraft test split and achieves 91.2% accuracy, with 90.8% balanced accuracy and 98.0% top-3 accuracy.
+
 ---
 
 # Repository structure
