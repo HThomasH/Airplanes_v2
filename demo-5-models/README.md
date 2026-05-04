@@ -8,3 +8,5 @@ app_file: app.py
 pinned: false
 license: apache-2.0
 ---
+
+Demo link: https://huggingface.co/spaces/HThomasH/Airplanes_v2
