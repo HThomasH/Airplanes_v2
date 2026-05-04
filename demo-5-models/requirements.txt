@@ -1,6 +1,3 @@
-fastai
-torch
-torchvision
-pillow
-gradio
+fastai==2.8.7
 ipython
+plum-dispatch>=2.8.0,<2.9.0

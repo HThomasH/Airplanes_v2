@@ -1,9 +1,10 @@
 ---
+colorFrom: indigo
+colorTo: pink
 sdk: gradio
-sdk_version: 6.1.0
+sdk_version: 6.10.0
 python_version: 3.12
 app_file: app.py
 pinned: false
+license: apache-2.0
 ---
-
-Link to Hugging Face space: https://huggingface.co/spaces/HThomasH/Airplanes_v2
