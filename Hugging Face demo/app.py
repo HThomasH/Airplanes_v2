@@ -1,14 +1,12 @@
 import json
+import os
+import threading
+import tempfile
 from pathlib import Path
 
 import gradio as gr
 import numpy as np
-import torch
-import torch.nn.functional as F
 from PIL import Image, ImageOps
-
-from fastai.vision.all import resnet34
-from fastai.vision.learner import create_cnn_model
 
 
 # -----------------------
@@ -21,6 +19,18 @@ SUPPORTED_FAMILIES_PATH = Path("supported_families.json")
 
 IMG_SIZE = 256
 TOPK = 5
+
+
+def configure_runtime():
+
+    cache_root = Path(tempfile.gettempdir()) / "fgvc_aircraft_cache"
+    cache_root.mkdir(parents=True, exist_ok=True)
+
+    os.environ.setdefault("TORCH_HOME", str(cache_root / "torch"))
+    os.environ.setdefault("MPLCONFIGDIR", str(cache_root / "matplotlib"))
+
+
+configure_runtime()
 
 
 # -----------------------
@@ -77,36 +87,68 @@ N_OUT = len(LABELS)
 
 
 # -----------------------
-# Build model
+# Runtime state
 # -----------------------
 
-device = torch.device("cpu")
-torch.set_num_threads(1)
+MODEL_LOCK = threading.Lock()
+MODEL = None
+DEVICE = None
+TORCH = None
+TORCH_F = None
+IMAGENET_MEAN = None
+IMAGENET_STD = None
 
-model = create_cnn_model(resnet34, n_out=N_OUT).to(device)
 
-state = torch.load(MODEL_PATH, map_location=device)
+def ensure_model_loaded():
 
-if isinstance(state, dict) and "model" in state and isinstance(state["model"], dict):
-    state = state["model"]
+    global MODEL, DEVICE, TORCH, TORCH_F, IMAGENET_MEAN, IMAGENET_STD
 
-missing, unexpected = model.load_state_dict(state, strict=False)
+    if MODEL is not None:
+        return MODEL, DEVICE, TORCH, TORCH_F
 
-if len(unexpected) > 0:
-    print(f"[warn] unexpected keys: {unexpected[:10]} ... ({len(unexpected)})")
+    with MODEL_LOCK:
 
-if len(missing) > 0:
-    print(f"[warn] missing keys: {missing[:10]} ... ({len(missing)})")
+        if MODEL is not None:
+            return MODEL, DEVICE, TORCH, TORCH_F
 
-model.eval()
+        import torch
+        import torch.nn.functional as F
+        from fastai.vision.all import resnet34
+        from fastai.vision.learner import create_cnn_model
+
+        device = torch.device("cpu")
+        torch.set_num_threads(1)
+
+        model = create_cnn_model(resnet34, n_out=N_OUT, pretrained=False).to(device)
+
+        state = torch.load(MODEL_PATH, map_location=device)
+
+        if isinstance(state, dict) and "model" in state and isinstance(state["model"], dict):
+            state = state["model"]
+
+        missing, unexpected = model.load_state_dict(state, strict=False)
+
+        if len(unexpected) > 0:
+            print(f"[warn] unexpected keys: {unexpected[:10]} ... ({len(unexpected)})")
+
+        if len(missing) > 0:
+            print(f"[warn] missing keys: {missing[:10]} ... ({len(missing)})")
+
+        model.eval()
+
+        MODEL = model
+        DEVICE = device
+        TORCH = torch
+        TORCH_F = F
+        IMAGENET_MEAN = torch.tensor([0.485, 0.456, 0.406]).view(3, 1, 1)
+        IMAGENET_STD = torch.tensor([0.229, 0.224, 0.225]).view(3, 1, 1)
+
+    return MODEL, DEVICE, TORCH, TORCH_F
 
 
 # -----------------------
 # Preprocess
 # -----------------------
-
-IMAGENET_MEAN = torch.tensor([0.485, 0.456, 0.406]).view(3, 1, 1)
-IMAGENET_STD = torch.tensor([0.229, 0.224, 0.225]).view(3, 1, 1)
 
 
 def pad_to_square(img: Image.Image):
@@ -133,6 +175,8 @@ def pad_to_square(img: Image.Image):
 
 def pil_to_tensor_norm(img: Image.Image):
 
+    _, _, torch, _ = ensure_model_loaded()
+
     img = img.convert("RGB")
 
     img = pad_to_square(img)
@@ -150,7 +194,6 @@ def pil_to_tensor_norm(img: Image.Image):
 # Predict
 # -----------------------
 
-@torch.inference_mode()
 def predict(pil_img: Image.Image):
 
     if pil_img is None:
@@ -158,17 +201,21 @@ def predict(pil_img: Image.Image):
 
     try:
 
-        x = pil_to_tensor_norm(pil_img).to(device)
+        model, device, torch, F = ensure_model_loaded()
 
-        logits = model(x)
+        with torch.inference_mode():
 
-        probs = F.softmax(logits, dim=1).squeeze(0)
+            x = pil_to_tensor_norm(pil_img).to(device)
 
-        k = min(TOPK, probs.numel())
+            logits = model(x)
 
-        vals, idxs = torch.topk(probs, k=k)
+            probs = F.softmax(logits, dim=1).squeeze(0)
 
-        out = {LABELS[i.item()]: float(v.item()) for v, i in zip(vals, idxs)}
+            k = min(TOPK, probs.numel())
+
+            vals, idxs = torch.topk(probs, k=k)
+
+            out = {LABELS[i.item()]: float(v.item()) for v, i in zip(vals, idxs)}
 
         return out, ""
 
@@ -285,4 +332,5 @@ with gr.Blocks(css=CSS, title="FGVC-Aircraft — Manufacturer Classifier") as de
         gr.Markdown(supported_families_md)
 
 
-demo.launch(server_name="0.0.0.0", server_port=7860)
+if __name__ == "__main__":
+    demo.launch(server_name="0.0.0.0", server_port=7860)
