@@ -11,5 +11,3 @@ pinned: false
 ---
 
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
-
-Demo link: https://huggingface.co/spaces/HThomasH/FGVC-Aircraft_manufacturers
